@@ -11,6 +11,7 @@ void uppercase(string str){
         }
         cout << str[i];
     }
+    
 }
 
 int getBit(int n, int pos){
