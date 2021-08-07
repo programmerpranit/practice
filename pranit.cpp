@@ -98,36 +98,41 @@ bool ratInMaze(int** arr, int x, int y, int n, int** solutionArr){
 
 int main(){
 
-    int n;
-    cin>>n;
 
-    int** arr = new int*[n];
-    for (int i=0; i<n;i++){
-        arr[i]=new int [n];
-    }
 
-    for(int i=0; i<n; i++){
-        for (int j=0; j<n; j++){
-            cin>>arr[i][j];
-        }
-    }
 
-    int** solutionArr = new int*[n];
-    for (int i=0; i<n;i++){
-        solutionArr[i]=new int [n];
-        for(int j=0; j<n; j++){
-            solutionArr[i][j]=0;
-        }
-    }
 
-    if (ratInMaze(arr,0,0,n,solutionArr)){
-        for(int i=0; i<n; i++){
-            for (int j=0; j<n; j++){
-                cout<<solutionArr[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-    }
+
+    // int n;
+    // cin>>n;
+
+    // int** arr = new int*[n];
+    // for (int i=0; i<n;i++){
+    //     arr[i]=new int [n];
+    // }
+
+    // for(int i=0; i<n; i++){
+    //     for (int j=0; j<n; j++){
+    //         cin>>arr[i][j];
+    //     }
+    // }
+
+    // int** solutionArr = new int*[n];
+    // for (int i=0; i<n;i++){
+    //     solutionArr[i]=new int [n];
+    //     for(int j=0; j<n; j++){
+    //         solutionArr[i][j]=0;
+    //     }
+    // }
+
+    // if (ratInMaze(arr,0,0,n,solutionArr)){
+    //     for(int i=0; i<n; i++){
+    //         for (int j=0; j<n; j++){
+    //             cout<<solutionArr[i][j]<<" ";
+    //         }
+    //         cout<<endl;
+    //     }
+    // }
    
     // cout<<friendsPairing(5);
     // cout<<tilingWays(4);
