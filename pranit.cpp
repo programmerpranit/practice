@@ -162,50 +162,78 @@ bool nQueen(int** arr, int x, int n){
 }
 
 
+//Sodoku solver
+
+bool isEmpty(int**arr){
+    for (int i=0; i<10; i++){
+        for (int j=0; j<10; j++){
+            if(arr[i][j]==0){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool isValid(int** arr, int x, int y, int num){
+
+    for(int i=0; i<10; i++){ //vertical search
+        if (arr[i][y]==num){
+            return false;
+        }
+    }
+    for(int i=0; i<10; i++){  //Horizontal Search
+        if (arr[x][i]==num){
+            return false;
+        }
+    }
+    //square search
+    for (int i=0; i<3; i++){
+        for (int j=0; j<3; j++){
+            if(arr[i+(x-(x%3))][j+(y-(y%3))]==num){
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+bool sodokuSolver(int** arr, int x ,int y ){
+    if(isEmpty(arr)){
+        cout<<"isEmpty true";
+        return true;
+    }
+
+    for(int row=x; row<9; row++){
+        for(int col=y; col<9; col++){
+            cout<<row<<col;
+        if(arr[row][col]==0){
+
+        
+
+        for (int i=1; i<10; i++){
+            if(isValid(arr,row,col,i)){
+                arr[row][col]=i;
+                if(sodokuSolver(arr, row, col)){
+                    return true;
+                }
+                arr[row][col]=0;
+                return false;
+            }
+        }
+        }
+
+        }
+    }
+    
+    return false;
+}
+
+
 int main(){
 
-    int n;
-    cin>>n;
-
-    int** arr = new int*[n];
-    for (int i=0; i<n;i++){
-        arr[i]=new int [n];
-        for(int j=0; j<n; j++){
-            arr[i][j]=0;
-        }
-    }
-
-    if (nQueen(arr, 0, n)){
-        for (int i=0; i<n; i++){
-            for(int j=0; j<n; j++){
-                cout<<arr[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-    }
-
-    // for(int i=0; i<n; i++){
-    //     for (int j=0; j<n; j++){
-    //         cin>>arr[i][j];
-    //     }
-    // }
-
-    // int** solutionArr = new int*[n];
-    // for (int i=0; i<n;i++){
-    //     solutionArr[i]=new int [n];
-    //     for(int j=0; j<n; j++){
-    //         solutionArr[i][j]=0;
-    //     }
-    // }
-
-    // if (ratInMaze(arr,0,0,n,solutionArr)){
-    //     for(int i=0; i<n; i++){
-    //         for (int j=0; j<n; j++){
-    //             cout<<solutionArr[i][j]<<" ";
-    //         }
-    //         cout<<endl;
-    //     }
-    // }
+    
    
     // cout<<friendsPairing(5);
     // cout<<tilingWays(4);
