@@ -231,10 +231,71 @@ bool sodokuSolver(int** arr, int x ,int y ){
 }
 
 
+//Merge Sort
+
+void mergearr(int arr[], int l, int mid, int r){
+
+    int n1 = mid-l+1;
+    int n2 = r-mid;
+
+    int a[n1];
+    int b[n2];
+
+    for (int i=0; i<n1; i++){
+        a[i]= arr[l+i];
+    }
+    for (int i=0; i<n2; i++){
+        b[i]= arr[mid+i+1];
+    }
+
+    int i=0;
+    int j=0;
+    int k=l;
+    while (i<n1 && j<n2){
+        if(a[i]<b[i]){
+            arr[k]=a[i];
+            i++;
+        }
+        else{
+            arr[k]=b[j];
+            j++;
+        }
+        k++;
+    }
+    while(i<n1){
+        arr[k]=a[i];
+        k++; i++;
+    }
+    while(j<n2){
+        arr[k]=b[j];
+        k++; j++;
+    }
+
+
+}
+
+void mergeSort(int arr[], int s, int e){
+    
+    if(s<e){
+        int mid=(s+e)/2;
+        
+        mergeSort(arr, s, mid);
+        mergeSort(arr, mid+1, e);
+
+        mergearr(arr, s, mid, e);
+    }
+
+
+}
+
+
 int main(){
 
-    
-   
+    int arr[] ={5,6,8,2,4,1};
+    mergeSort(arr, 0, 5);
+    for (int i=0; i<6; i++){
+        cout<<arr[i]<<" ";
+    }
     // cout<<friendsPairing(5);
     // cout<<tilingWays(4);
     // cout<<possiblePath(5,5);
