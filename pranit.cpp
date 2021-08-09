@@ -288,11 +288,50 @@ void mergeSort(int arr[], int s, int e){
 
 }
 
+//Quick Sort
+
+void swap(int arr[],int i,int j){
+    int temp=arr[i];
+    arr[i]=arr[j];
+    arr[j]=temp;
+}
+
+int partetian(int arr[],int l, int h){
+    int pivot = arr[l];
+    int i = l;
+    int j = h;
+
+    while (i<j){
+        while (arr[i]<=pivot){
+            i++;
+        }
+        while(arr[j]>=pivot){
+            j--;
+        }
+        if(i<j){
+            swap(arr,i,j);
+        }
+    }
+    swap(arr,j,l);
+    return j;
+}
+
+void quicksort(int arr[], int l, int h){
+    if(l<h){
+        int piviot=partetian(arr, l, h);
+
+        quicksort(arr, l, piviot-1);
+        quicksort(arr, piviot+1,h);
+
+
+    }
+}
+
 
 int main(){
 
     int arr[] ={5,6,8,2,4,1};
-    mergeSort(arr, 0, 5);
+    quicksort(arr, 0, 5);
     for (int i=0; i<6; i++){
         cout<<arr[i]<<" ";
     }
